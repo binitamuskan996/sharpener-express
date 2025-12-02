@@ -30,10 +30,7 @@ app.post('/categories', (req, res) => {
 });
 
 // Wildcard route to handle all undefined routes (404 error)
-app.use((req, res) => {
-  console.log(`404 - Route not found: ${req.method} ${req.url}`);
-  res.status(404).send('<h1>404 - Page Not Found</h1>');
-});
+app.use('*', (req, res) => { res.status(404).send('<h1>404 - Page Not Found</h1>'); })
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
